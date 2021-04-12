@@ -2,8 +2,6 @@
 
 > Persistent state made easy
 
-[![NPM](https://img.shields.io/npm/v/react-use-persistent.svg)](https://www.npmjs.com/package/react-use-persistent) [![JavaScript Style Guide](https://img.shields.io/badge/code_style-standard-brightgreen.svg)](https://standardjs.com)
-
 ## Install
 
 ```bash
@@ -15,13 +13,14 @@ npm install --save react-use-persistent
 ```tsx
 import React, { Component } from 'react'
 
-import MyComponent from 'react-use-persistent'
-import 'react-use-persistent/dist/index.css'
+import { usePersistent } from 'react-use-persistent'
 
-class Example extends Component {
-  render() {
-    return <MyComponent />
-  }
+function MyComponent() {
+  const [ setting, setSetting ] = usePersistent("localstorage-key", false);
+
+  return (
+    <input type="checkbox" checked={setting} onChange={event => setSetting(event.target.checked)} />
+  )
 }
 ```
 
